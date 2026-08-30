@@ -8,49 +8,53 @@ import Events from "./pages/Events";
 import Devices from "./pages/Devices";
 import Access from "./pages/Access";
 import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
   return (
     <BrowserRouter>
-
       <Navbar />
 
       <Routes>
-
-        <Route
-        path="/login"
-        element={<Login />}
-        />
+        <Route path="/login" element={<Login />} />
 
         <Route
           path="/"
           element={
             <ProtectedRoute>
-                <Dashboard />
+              <Dashboard />
             </ProtectedRoute>
           }
         />
 
         <Route
           path="/events"
-          element={<ProtectedRoute>
-                <Events />
-            </ProtectedRoute>}
+          element={
+            <ProtectedRoute>
+              <Events />
+            </ProtectedRoute>
+          }
         />
 
         <Route
           path="/devices"
-          element={<ProtectedRoute>
-                <Devices />
-            </ProtectedRoute>}
+          element={
+            <ProtectedRoute>
+              <Devices />
+            </ProtectedRoute>
+          }
         />
 
         <Route
           path="/access"
-          element={<ProtectedRoute>
-                <Access />
-            </ProtectedRoute>}
+          element={
+            <ProtectedRoute>
+              <Access />
+            </ProtectedRoute>
+          }
         />
+
+        <Route path="/register" element={<Register />} />
         
       </Routes>
     </BrowserRouter>

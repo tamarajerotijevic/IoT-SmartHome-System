@@ -15,6 +15,20 @@ def register():
 
     data = request.get_json()
 
+    if not data.get("username") or not data.get("password"):
+        return jsonify({
+            "message": "Username and password are required"
+        }), 400
+
+    existing_user = User.query.filter_by(
+        username=data["username"]
+    ).first()
+
+    if existing_user:
+        return jsonify({
+            "message": "Username already exists"
+        }), 409
+    
     user = User(
         username=data["username"],
         password=data["password"]

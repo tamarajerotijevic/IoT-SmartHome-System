@@ -45,3 +45,7 @@ export const addAuthorizedCard = (data) => {
         data
     );
 };
+
+export const register = (data) => {
+    return axios.post(`${API_URL}/auth/register`, data);
+};
