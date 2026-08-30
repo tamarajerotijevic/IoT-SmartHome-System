@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 import { getEvents } from "../services/api";
 
+import formatDate from "../utils/FormatDate";
+
 function Events() {
 
     const [events, setEvents] = useState([]);
 
     useEffect(() => {
+
+        const loadEvents = () => {
 
         getEvents()
             .then(response => {
@@ -15,7 +19,20 @@ function Events() {
                 console.log(error);
             });
 
-    }, []);
+    };
+
+    loadEvents();
+
+    const interval = setInterval(
+        loadEvents,
+        3000
+    );
+
+    return () => {
+        clearInterval(interval);
+    };
+
+}, []);
 
     return (
 
@@ -41,7 +58,7 @@ function Events() {
                                     {event.type}
                                 </h2>
                                 <p className="text-sm text-slate-500 font-bold">
-                                    {event.timestamp}
+                                    {formatDate(event.timestamp)}
                                 </p>
                             </div>
                             <p className="mt-3 text-slate-700">

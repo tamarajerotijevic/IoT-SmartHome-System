@@ -15,7 +15,7 @@ export const getDevices = () => {
 export const sendArduinoCommand = (command) => {
 
     return axios.post(
-        "http://127.0.0.1:5001/arduino-command",
+        `${API_URL}/control/light`,
         {
             command: command
         }

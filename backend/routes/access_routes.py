@@ -55,7 +55,9 @@ def add_authorized_card():
 @access_bp.route("/logs", methods=["GET"])
 def get_access_logs():
 
-    logs = AccessLog.query.all()
+    logs = AccessLog.query.order_by(
+        AccessLog.timestamp.desc()
+    ).limit(10).all()
 
     result = []
 

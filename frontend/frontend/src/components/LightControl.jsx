@@ -5,7 +5,7 @@ function LightControl(){
 
     const turnOn = () => {
 
-        sendArduinoCommand("LED_ON")
+        sendArduinoCommand("ON")
             .then(response=>{
                 console.log(response.data);
             })
@@ -18,7 +18,7 @@ function LightControl(){
 
     const turnOff = () => {
 
-        sendArduinoCommand("LED_OFF")
+        sendArduinoCommand("OFF")
             .then(response=>{
                 console.log(response.data);
             })

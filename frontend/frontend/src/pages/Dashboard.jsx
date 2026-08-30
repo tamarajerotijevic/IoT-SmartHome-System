@@ -15,22 +15,37 @@ function Dashboard() {
   const [devices, setDevices] = useState([]);
 
   useEffect(() => {
-    getSensorData()
-      .then((response) => {
-        setSensorData(response.data[0]);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+     const loadSensorData = () => {
 
-    getDevices()
-      .then((response) => {
-        setDevices(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+        getSensorData()
+            .then((response) => {
+
+                const data = response.data;
+
+                if (data.length > 0) {
+                    // Uzimamo poslednji zapis
+                    setSensorData(data[data.length - 1]);
+                }
+
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+  };
+
+  loadSensorData();
+
+  const interval = setInterval(
+        loadSensorData,
+        2000
+    );
+
+
+    return () => {
+        clearInterval(interval);
+    };
+
+}, []);
 
 
 

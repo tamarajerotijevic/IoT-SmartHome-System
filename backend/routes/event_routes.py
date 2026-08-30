@@ -13,7 +13,9 @@ event_bp = Blueprint(
 @event_bp.route("/", methods=["GET"])
 def get_events():
 
-    events = Event.query.all()
+    events = Event.query.order_by(
+        Event.timestamp.desc()
+    ).limit(20).all()
 
     result = []
 
