@@ -31,7 +31,7 @@ function LightControl(){
 
     return (
 
-        <div className="rounded-[2rem] bg-[#F7F7F9] p-8 shadow-2xl shadow-black/5 ring-1 ring-slate-200 mt-8">
+        <div className="rounded-4xl bg-[#F7F7F9] p-8 shadow-2xl shadow-black/5 ring-1 ring-slate-200 mt-8">
 
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div>
